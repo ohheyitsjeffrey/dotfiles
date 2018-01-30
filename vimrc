@@ -51,7 +51,7 @@ let g:html_indent_inctags = "html,body,head,tbody"
 " let g:closetag_filenames = "*.html,*.xhtml,*.phtml"
 
 " NERDtree settings
-
+map <F9> :NERDTreeToggle<CR>
 "autocmd VimEnter * NERDTree     "open nerd tree by default
 
 "let &colorcolumn=join(range(81,999),",")          " higlight past 81st line
