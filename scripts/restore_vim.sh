@@ -2,29 +2,40 @@
 
 # restore vim to however it was set up the last time I ran this script
 
-if ! [ $(which vim) || $(which vim-gnome) || git ]
-then
+if ! [ $(which vim) ] || ! [ $(which gvim) ] || ! [ $(which git) ] ; then
+  # TODO this should be updated to be run on non-ubuntu systems.
   echo "enter your password so we can install some things"
   sudo apt install vim vim-gnome git
 else
-  echo "vim, gvim, and git already installed"
+  echo "oh good! vim, gvim, and git already installed"
 fi
 
-# copy vimrc
-echo "copying .vimrc to home"
-cp .vimrc $HOME/.vimrc
+this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# create backup directories
-echo "creating backup directory"
-mkdir $HOME/.vim/backup_files/
-echo "creating swap directory"
-mkdir $HOME/.vim/swap_files/
-echo "creating undo directory"
-mkdir $HOME/.vim/undo_files/
+# run script to link dot files if they are not already linked
+$this_dir/link_dots.sh
+
+# create directories for backups and swaps and undos
+if ! [ -d $HOME/.vim/backup_files/  ]; then
+  echo "creating backup directory"
+  mkdir $HOME/.vim/backup_files/
+fi
+
+if ! [ -d  $HOME/.vim/swap_files/ ]; then
+  echo "creating swap directory"
+  mkdir $HOME/.vim/swap_files/
+fi
+
+if ! [ -d  $HOME/.vim/undo_files/ ]; then
+  echo "creating undo directory"
+  mkdir $HOME/.vim/undo_files/
+fi
 
 # set up vundle
-echo "installing vundle and plugins"
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall
+if ! [ -d $HOME/.vim/bundle/Vundle.vim ]; then
+  echo "getting vundle"
+  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+fi
 
-# todo: gvim settings, more plugins
+# finally, let vundle do its thing
+vim +PluginInstall +qall
