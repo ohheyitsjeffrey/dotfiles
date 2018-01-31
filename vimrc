@@ -10,7 +10,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'      " let Vundle manage Vundle, required
 Plugin 'scrooloose/nerdtree'       " everyone loves the goddamn nerd tree online
 "Plugin 'Valloric/YouCompleteMe'   " autocomplete
-"Plugin 'mattn/emmet-vim'          " html completer
+Plugin 'mattn/emmet-vim'          " html completer
 
 "Plugin 'moll/vim-node'            " node plugins
 
@@ -39,6 +39,7 @@ set shiftwidth=2
 set expandtab
 set autoindent
 set cindent
+"set cursorline
 
 " Auto change the directory to the current file I'm working on
 " autocmd BufEnter * lcd %:p:h 
