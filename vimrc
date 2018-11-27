@@ -56,5 +56,5 @@ map <F9> :NERDTreeToggle<CR>
 "autocmd VimEnter * NERDTree     "open nerd tree by default
 
 "let &colorcolumn=join(range(81,999),",")          " higlight past 81st line
-set colorcolumn=81                                 " just 81st line
-highlight ColorColumn ctermbg=232 guibg=232      
+"set colorcolumn=81                                 " just 81st line
+"highlight ColorColumn ctermbg=232 guibg=232      

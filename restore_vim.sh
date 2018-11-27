@@ -18,17 +18,17 @@ $this_dir/link_dots.sh
 # create directories for backups and swaps and undos
 if ! [ -d $HOME/.vim/backup_files/  ]; then
   echo "creating backup directory"
-  mkdir $HOME/.vim/backup_files/
+  mkdir -p $HOME/.vim/backup_files/
 fi
 
 if ! [ -d  $HOME/.vim/swap_files/ ]; then
   echo "creating swap directory"
-  mkdir $HOME/.vim/swap_files/
+  mkdir -p $HOME/.vim/swap_files/
 fi
 
 if ! [ -d  $HOME/.vim/undo_files/ ]; then
   echo "creating undo directory"
-  mkdir $HOME/.vim/undo_files/
+  mkdir -p $HOME/.vim/undo_files/
 fi
 
 # set up vundle
