@@ -20,3 +20,11 @@ else
   echo ".gvimrc is already linked."  
 fi
 
+if ! [ -L $HOME/.tmux.conf  ]; then
+  echo "linking .tmux.conf"
+  ln -s $this_dir/tmux.conf $HOME/.tmux.conf
+else
+  echo ".tmux.conf is already linked."  
+fi
+
+
